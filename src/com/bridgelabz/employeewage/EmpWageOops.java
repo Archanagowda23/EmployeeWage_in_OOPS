@@ -1,6 +1,6 @@
 package com.bridgelabz.employeewage;
 
-public class EmpWageMultiCompanies {
+public class EmpWageOops {
 
     //cConstant
     public static final int IS_PART_TIME = 1;
@@ -11,49 +11,54 @@ public class EmpWageMultiCompanies {
     private final int empRatePerHour;
     private final int numOfWorkingDays;
     private final int maxHoursPerMonth;
+    private  int totalEmpWage;
 
     //Constructor
-    public EmpWageMultiCompanies(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    public EmpWageOops(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
         this.company = company;
         this.empRatePerHour = empRatePerHour;
         this.numOfWorkingDays = numOfWorkingDays;
         this.maxHoursPerMonth = maxHoursPerMonth;
     }
 
-    public static void main(String[] args) {
-        EmpWageMultiCompanies zomato = new EmpWageMultiCompanies("zomato", 20, 3, 10);
-        EmpWageMultiCompanies swiggy = new EmpWageMultiCompanies("swiggy", 15, 2, 12);
-        EmpWageMultiCompanies dominoz = new EmpWageMultiCompanies("dominoz", 10, 3, 14);
-        zomato.computeEmpWage();
-        swiggy.computeEmpWage();
-        dominoz.computeEmpWage();
-    }
 
     private void computeEmpWage() {
         System.out.println("-----------------Welcome To Employee Wage Computation " + company + "-----------------");
-        // Variables
         int empHrs = 0;
-        int totalEmpHrs = 0;
         int totalWorkingDays = 0;
-
-        // Computation
-        while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays <= numOfWorkingDays) {
+        int totalEmpHrs = 0;
+        while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
             totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
                 case IS_PART_TIME:
+                    System.out.println("Employee is Present");
                     empHrs = 4;
                     break;
                 case IS_FULL_TIME:
+                    System.out.println("Employee is Present");
                     empHrs = 8;
                     break;
                 default:
+                    System.out.println("Employee is Absent");
                     empHrs = 0;
             }
             totalEmpHrs += empHrs;
-            System.out.println("Day " + totalWorkingDays + ": Emp Hrs: " + empHrs);
+            System.out.println("Day : " + totalWorkingDays + "Emp Hr: " +empHrs);
+
         }
-        int totalEmpWage = totalEmpHrs * empRatePerHour;
-        System.out.println("Total Emp Wage for " + company + " is " + totalEmpWage + ".");
+        totalEmpWage = totalEmpHrs * empRatePerHour;
+    }
+    @Override
+    public String toString() {
+        return "Total Emp Wage for Company : " +company+" is: "+ totalEmpWage;
+    }
+    public static void main(String[] args) {
+        EmpWageOops zomato = new EmpWageOops("zomato", 20, 3, 10);
+        EmpWageOops swiggy = new EmpWageOops("swiggy", 15, 2, 12);
+        EmpWageOops dominoz = new EmpWageOops("dominoz", 10, 3, 14);
+        zomato.computeEmpWage();
+        swiggy.computeEmpWage();
+        dominoz.computeEmpWage();
     }
 }
