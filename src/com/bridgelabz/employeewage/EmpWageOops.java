@@ -44,11 +44,11 @@ public class EmpWageOops implements EmpWageBuilder {
 
         ArrayList<CompanyEmpWage> company = new ArrayList<CompanyEmpWage>();
         // assign value to object of Companyempwage
-        company.add( new CompanyEmpWage("Dmart", 40, 20, 100));
+        company.add( new CompanyEmpWage("Zomato", 40, 20, 100));
         emp.computeEmpWage(company.get(0));
-        company.add( new CompanyEmpWage("Relience", 30, 22, 120));
+        company.add( new CompanyEmpWage("Swiggy", 30, 22, 120));
         emp.computeEmpWage(company.get(1));
-        company.add( new CompanyEmpWage("BigBazar", 45, 18, 90));
+        company.add( new CompanyEmpWage("Dominoz", 45, 18, 90));
         emp.computeEmpWage(company.get(2));
     }
 }
